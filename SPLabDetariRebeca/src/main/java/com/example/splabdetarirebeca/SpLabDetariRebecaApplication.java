@@ -10,7 +10,7 @@ public class SpLabDetariRebecaApplication {
 
         //SpringApplication.run(SpLabDetariRebecaApplication.class, args);
         Book noapteBuna = new Book("Noapte buna, copii!");
-        Author rpGheo = new Author("Radu Pavel Gheo");
+        Author rpGheo = new Author("Radu Pavel","Gheo");
         noapteBuna.addAuthor(rpGheo);
         Section cap1 = new Section("Capitolul 1");
         Section cap11 = new Section("Capitolul 1.1");
