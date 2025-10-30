@@ -8,7 +8,7 @@ public class SpLabDetariRebecaApplication {
 
     public static void main(String[] args) {
 
-        //SpringApplication.run(SpLabDetariRebecaApplication.class, args);
+        SpringApplication.run(SpLabDetariRebecaApplication.class, args);
        /* Book noapteBuna = new Book("Noapte buna, copii!");
         Author rpGheo = new Author("Radu Pavel","Gheo");
         noapteBuna.addAuthor(rpGheo);
@@ -27,7 +27,7 @@ public class SpLabDetariRebecaApplication {
         cap1111.add(new Paragraph("Text from subchapter 1.1.1.1"));
         noapteBuna.print();
         */
-        Section cap1 = new Section("Capitolul 1");
+        /*Section cap1 = new Section("Capitolul 1");
         Paragraph p1 = new Paragraph("Paragraph 1");
         cap1.add(p1);
         Paragraph p2 = new Paragraph("Paragraph 2");
@@ -47,6 +47,7 @@ public class SpLabDetariRebecaApplication {
         System.out.println("Printing with Alignment");
         System.out.println();
         cap1.print();
+        */
     }
 
 }
