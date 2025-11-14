@@ -1,7 +1,9 @@
 package com.example.splabdetarirebeca;
 
+import com.example.splabdetarirebeca.observer.AllBooksSubject;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class SpLabDetariRebecaApplication {
@@ -48,6 +50,10 @@ public class SpLabDetariRebecaApplication {
         System.out.println();
         cap1.print();
         */
+    }
+    @Bean
+    public AllBooksSubject allBooksSubject() {
+        return new AllBooksSubject();
     }
 
 }
