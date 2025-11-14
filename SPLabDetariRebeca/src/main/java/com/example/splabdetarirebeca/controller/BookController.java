@@ -1,6 +1,7 @@
 package com.example.splabdetarirebeca.controller;
 
 import com.example.splabdetarirebeca.Book;
+import com.example.splabdetarirebeca.observer.AllBooksSubject;
 import com.example.splabdetarirebeca.repository.BookRepository;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,20 +12,25 @@ import java.util.List;
 public class BookController {
 
     private final BookRepository bookRepository;
+    private final AllBooksSubject allBooksSubject;
 
-    public BookController(BookRepository bookRepository) {
+    public BookController(BookRepository bookRepository, AllBooksSubject allBooksSubject) {
         this.bookRepository = bookRepository;
+        this.allBooksSubject = allBooksSubject;
     }
 
-    // GET /books → returnează toate cărțile din baza de date
-    @GetMapping
-    public List<Book> getAllBooks() {
-        return bookRepository.findAll();
-    }
-
-    // POST /books → adaugă o carte nouă
     @PostMapping
     public Book addBook(@RequestBody Book book) {
-        return bookRepository.save(book);
+        Book saved = bookRepository.save(book);
+
+        // AICI SE FACE NOTIFICAREA
+        allBooksSubject.notifyObservers(saved);
+
+        return saved;
+    }
+
+    @GetMapping
+    public List<Book> getAll() {
+        return bookRepository.findAll();
     }
 }

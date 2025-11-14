@@ -1,0 +1,29 @@
+<html lang="en">
+<body>
+
+<h1>All Books</h1>
+<a href="javascript:void(0)" onclick="sendRequest()">Fetch Books</a>
+
+<div id="sseDiv"></div>
+
+<script>
+    function sendRequest() {
+        if (typeof(EventSource) !== "undefined") {
+
+            const source = new EventSource("http://localhost:8080/books-sse");
+
+            // AICI adaugi event listener-ul corect
+            source.addEventListener("book-added", function(event) {
+                const data = JSON.parse(event.data);
+                document.getElementById("sseDiv").innerHTML += "A fost adaugata o carte noua" + "<br>";
+            });
+
+        } else {
+            document.getElementById("sseDiv").innerHTML =
+                "Your browser does not support server-sent events.";
+        }
+    }
+</script>
+
+</body>
+</html>
